@@ -1,4 +1,4 @@
-package engine
+package goengine
 
 import (
 	"fmt"
@@ -17,8 +17,12 @@ func NewResponse(w http.ResponseWriter) (*Response){
 	return response
 }
 
-func (response *Response) AddHeader(key string, value string){
-	response.w.Header().Add(key, value)
+func (response *Response) SetHttpStatus(code int){
+	response.w.WriteHeader(code)
+}
+
+func (response *Response) SetHeader(key string, value string){
+	response.w.Header().Set(key, value)
 }
 
 func (response *Response) RenderText(text string){

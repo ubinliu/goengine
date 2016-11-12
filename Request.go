@@ -1,4 +1,4 @@
-package engine
+package goengine
 
 import (
 	"net/http"
@@ -47,4 +47,12 @@ func (request *Request)GetParamByName(name string) (value string){
 	}
 	
 	return request.r.Form.Get(name)
+}
+
+func (request *Request)GetHeader(name string)(value string){
+	return request.r.Header.Get(name)
+}
+	
+func (request *Request)SetHeader(name string, value string) {
+	request.r.Header.Set(name, value)
 }

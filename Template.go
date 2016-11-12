@@ -1,4 +1,4 @@
-package engine
+package goengine
 
 import (
 	"html/template"
