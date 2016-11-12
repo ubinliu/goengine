@@ -56,7 +56,7 @@ func (router *Router) Route(ctx *Context){
             if router.Handle5xx != nil {
 				router.Handle5xx(ctx)
 			}else{
-				ctx.Response.RenderText("<h1>500 server internal error</h1>")
+				ctx.Response.RenderText("500 server internal error")
 				fmt.Println(err)
 			}
         }
@@ -83,6 +83,6 @@ func (router *Router) Route(ctx *Context){
 		router.Handle4xx(ctx)
 		return
 	}
-	ctx.Response.RenderText("<h1>404 not found</h1>")
+	ctx.Response.RenderText("404 not found")
 }
 

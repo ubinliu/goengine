@@ -56,3 +56,11 @@ func (request *Request)GetHeader(name string)(value string){
 func (request *Request)SetHeader(name string, value string) {
 	request.r.Header.Set(name, value)
 }
+
+func (request *Request)ClientIp() string{
+	return strings.Split(request.r.RemoteAddr, ":")[0]
+}
+
+func (request *Request)ClientPort() string{
+	return strings.Split(request.r.RemoteAddr, ":")[1]
+}

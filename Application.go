@@ -116,6 +116,7 @@ func (app *Application)basicAuth() bool{
 }
 
 func (app *Application) ServeHTTP(w http.ResponseWriter, r *http.Request){
+	
 	//for assets route
 	currentPath := r.URL.Path
 	if len(app.assets) > 0 {
