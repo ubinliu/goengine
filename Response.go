@@ -53,3 +53,7 @@ func (response *Response) Redirect(url string){
 	response.w.Header().Set("Location", url)
 	response.w.WriteHeader(302)
 }
+
+func (response *Response) SetCookie(cookie *http.Cookie){
+	http.SetCookie(response.w, cookie)
+}

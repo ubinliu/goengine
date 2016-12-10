@@ -64,3 +64,12 @@ func (request *Request)ClientIp() string{
 func (request *Request)ClientPort() string{
 	return strings.Split(request.r.RemoteAddr, ":")[1]
 }
+
+func (request *Request)GetCookie(name string)(cookie *http.Cookie){
+	cookie, err := request.r.Cookie(name)
+	if err != nil {
+		return nil
+	}
+	
+	return cookie
+}
