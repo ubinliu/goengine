@@ -25,7 +25,7 @@ func (t *Template)ParseAllTemplates(viewPath string, suffix string){
 	}
 
 	suffix = strings.ToUpper(suffix)
-	pathLen := len(viewPath)
+
 	err := filepath.Walk(viewPath, func(path string, f os.FileInfo, err error) error {
         if (f == nil) {
 			return err
@@ -35,14 +35,11 @@ func (t *Template)ParseAllTemplates(viewPath string, suffix string){
 		}
 		
 		if strings.HasSuffix(strings.ToUpper(f.Name()), suffix) {
-			name := path[pathLen:len(path)]
 			
 			t.AllTemplates, err = t.AllTemplates.ParseFiles(path)
 			if err != nil {
 				fmt.Println("template parse files failed", err.Error())
 				return err
-			}else{
-				fmt.Println("template parse file", name, path)
 			}
 			
 		}
